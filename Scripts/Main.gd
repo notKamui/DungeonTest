@@ -98,7 +98,7 @@ func make_rooms():
 	path = mst_prim(room_positions)
 
 
-func mst_prim(nodes: Array):
+func mst_prim(nodes: Array) -> AStar2D:
 	var new_path: AStar2D = AStar2D.new()
 	
 	new_path.add_point(new_path.get_available_point_id(), nodes.pop_front())
