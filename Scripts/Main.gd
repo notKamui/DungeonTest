@@ -19,12 +19,12 @@ var play_mode: bool = false
 var player = null
 
 
-func _ready():
+func _ready() -> void:
 	randomize()
 	make_rooms()
 
 
-func _draw():
+func _draw() -> void:
 	if play_mode: return
 	
 	$Camera2D.zoom = Vector2(10, 10)
@@ -46,11 +46,11 @@ func _draw():
 			visited.append(pid)
 
 
-func _process(_delta: float):
+func _process(_delta: float) -> void:
 	update()
 
 
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select"):
 		if play_mode:
 			player.queue_free()
@@ -71,7 +71,7 @@ func _input(event: InputEvent):
 		play_mode = true
 
 
-func make_rooms():
+func make_rooms() -> void:
 	for i in num_rooms:
 		var pos: Vector2 = Vector2(rand_range(-hspread, hspread), 0)
 		var curr_room: RigidBody2D = Room.instance()
@@ -125,7 +125,7 @@ func mst_prim(nodes: Array) -> AStar2D:
 	return new_path
 
 
-func make_map():
+func make_map() -> void:
 	Map.clear()
 	
 	# enclose map in walls
@@ -165,7 +165,7 @@ func make_map():
 		corridors.append(next)
 
 
-func carve_path(start: Vector2, end: Vector2):
+func carve_path(start: Vector2, end: Vector2) -> void:
 	var delta_x = sign(end.x - start.x)
 	var delta_y = sign(end.y - start.y)
 	if delta_x == 0: delta_x = pow(-1, randi() % 2)

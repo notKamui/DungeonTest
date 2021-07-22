@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var size: Vector2
 
-func make_room(pos: Vector2, siz: Vector2):
+func make_room(pos: Vector2, siz: Vector2) -> void:
 	position = pos
 	size = siz
 	
